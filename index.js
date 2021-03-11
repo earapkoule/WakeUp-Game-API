@@ -1,7 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const constants = require("./constants");
 
 const app = express();
+app.use(cors());
 app.listen(443, () => {
   console.log("App listening at 'http://localhost:443/'");
 });

@@ -9,7 +9,7 @@ const SIMPLE_CALCULATIONS = [
   "5 x 4",
   "4 x 6",
   "9 + 7",
-  " 8 - 3",
+  "8 - 3",
   "8 / 4",
 ];
 
