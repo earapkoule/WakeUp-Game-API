@@ -1,4 +1,5 @@
 const express = require("express");
+const constants = require("./constants");
 
 const app = express();
 app.listen(443, () => {
@@ -6,5 +7,8 @@ app.listen(443, () => {
 });
 
 app.get("/calculations", (req, res) => {
-  res.send({ calculations: ["4+4", "9+3"] });
+  res.send({
+    calculations: constants.SIMPLE_CALCULATIONS,
+    answers: constants.SIMPLE_CALCULATIONS_ANSWERS,
+  });
 });
