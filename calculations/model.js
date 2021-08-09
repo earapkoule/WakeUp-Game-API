@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const calculationSchema = new mongoose.Schema({
-  calculation: String,
-  answer: Number,
+  calculation: { type: String, required: true },
+  answer: { type: Number, required: true },
 });
 const Calculation = mongoose.model("Calculation", calculationSchema);
 
