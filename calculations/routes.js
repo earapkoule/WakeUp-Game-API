@@ -50,10 +50,16 @@ router.patch("/:calculationId", (req, res) => {
 
 // DELETE
 router.delete("/:calculationId", (req, res) => {
-  Calculation.findByIdAndRemove(req.params.calculationId, (err) => {
-    if (err) console.log(err);
-    res.send(req.params.calculationId);
-  });
+  Calculation.findByIdAndRemove(req.params.calculationId)
+    .then(() => res.send(req.params.calculationId))
+    .catch(() => res.sendStatus(400));
+});
+
+// DELETE ALL
+router.delete("/", (req, res) => {
+  Calculation.deleteMany({})
+    .then(() => res.send("ok!"))
+    .catch(() => res.sendStatus(400));
 });
 
 module.exports = router;
