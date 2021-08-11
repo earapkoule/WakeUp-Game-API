@@ -1,17 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const router = require("./calculations/routes");
-const mongoose = require("mongoose");
-
-const DBConnection = async () => {
-  await mongoose.connect("mongodb://localhost:27017/wakeup-db", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  });
-  console.log("DB connected...");
-};
+const calculationsRouter = require("./calculations/calculations.routes");
+const usersRouter = require("./users/users.routes");
+const DBConnection = require("./DBConnection");
 
 DBConnection();
 
@@ -22,4 +13,5 @@ app.listen(443, () => {
   console.log("App listening at 'http://localhost:443/'");
 });
 
-app.use("/calculations", router);
+app.use("/calculations", calculationsRouter);
+app.use("/users", usersRouter);
